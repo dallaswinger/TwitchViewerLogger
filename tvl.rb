@@ -23,31 +23,31 @@ class OptParser
     opt_parser = OptionParser.new do |opts|
     	opts.banner = "Usage: tvl.rb [-u/--username <username>] [-r/--rate <seconds>] [-l/--log] "
     	opts.on("-u", "--username USERNAME", "enter twitch streamer username to track") do |v|
-    		options[:user] = v
+        options[:user] = v
     	end
     	opts.on("-x", "--devmode", "print parsed users from each message for debugging") do |v|
-    		options[:devmode] = true
+        options[:devmode] = true
     	end
     	opts.on("-d", "--daemon", "no logging to stdout, meant for background use with -l") do |v|
-    		options[:daemon] = true
+        options[:daemon] = true
     	end
     	opts.on("-l", "--log", "log db state as json each poll to local file") do |v|
-    		options[:log] = true
+        options[:log] = true
     	end
     	opts.on("-v", "--verbose", "show usernames instead of just counts in stdout - non formatted, large viewer counts will be wall") do |v|
-    		options[:verbose] = true
+        options[:verbose] = true
     	end
     	opts.on("-r", "--rate INT", "int >5 in seconds for polling interval") do |v|
-    		begin
-    			options[:rate] = v.to_i
-    		rescue
-    			options[:rate] = 5
-    		end
-    	end
-    	opts.on("-h", "--help", "Usage: ") do
-    		puts opts
-    		exit
-    	end
+        begin
+          options[:rate] = v.to_i
+        rescue
+          options[:rate] = 5
+        end
+      end
+      opts.on("-h", "--help", "Usage: ") do
+        puts opts
+        exit
+      end
     end
     opt_parser.parse!(opts)
     return options
